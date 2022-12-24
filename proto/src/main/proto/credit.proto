@@ -1,0 +1,23 @@
+syntax = "proto3";
+import "common/common.proto";
+option java_multiple_files  =true;
+option java_package  = "com.stb.credit";
+
+message AccountInfoRequest{
+  string account_id = 1;
+}
+message AccountInfoResponse{
+  string login_id = 1;
+  int32 money_amount = 2;
+}
+
+message AccountInfoUpdateRequest{
+  string login_id = 1;
+  int32 money_amount = 2;
+}
+
+service CreditAccountService{
+  rpc getAccountInfo(AccountInfoRequest) returns (AccountInfoResponse);
+  rpc updateAccountInfo(AccountInfoUpdateRequest) returns(AccountInfoResponse);
+
+}
